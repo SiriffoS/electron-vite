@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
+    "esModuleInterop": true,
     "sourceMap": false,
     "moduleResolution": "Node",
     "skipLibCheck": true,
@@ -10,9 +11,11 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "/@/*": ["./src/*"]
+      "/@/*": ["./src/*"],
+      "_/*": ["./src/*"],
+      "_common/*": ["../common/*"],
     }
   },
-  "include": ["src/**/*.ts", "../../types/**/*.d.ts"],
+  "include": ["src/**/*.ts", "../../types/**/*.d.ts", "src/index.ts"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

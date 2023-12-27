@@ -7,14 +7,18 @@
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
       "#preload": ["../preload/src/index"],
-      "/@/*": ["./src/*"]
+      "/@/*": ["./src/*"],
+      "_/*": ["./src/*"],
+      "_common/*": ["../common/*"]
     },
-    "lib": ["ESNext", "dom", "dom.iterable"]
+    "lib": ["ESNext", "dom", "dom.iterable"],
+    "jsx": "react-jsx",
+"allowSyntheticDefaultImports": true,
+"esModuleInterop":true,
   },
   "include": [
     "src/**/*.vue",
@@ -22,6 +26,6 @@
     "src/**/*.tsx",
     "types/**/*.d.ts",
     "../../types/**/*.d.ts"
-  ],
+, "../main/src/models/criterion.ts"  ],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

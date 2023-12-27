@@ -1,0 +1,9 @@
+id(integer),title(string),subtitle(string),imageFileName(string),soundFileName(string)
+1,Beginner producer,Start your journey and master the basics.,Ableton Live Demo Project,
+2,Synth Master,Master synths like a pro,Ableton Live Wavetable,
+3,Equalize 101,Learn how to use EQ to make your tracks sound better,Mountain Pine Forest,
+4,Drum Master,"Learn drum patterns, and how to make your drums sound better",Ghetto Blaster,
+5,Arpegiator Basics,Leave the boring 4/4 behind and learn how to make arpeggios,Clouds,
+6,Vocal Recording 101,Learn how to record vocals like a pro,Boy Singing Microphone,
+7,In the style of Meduza,Learn how to remake the sound,Meduza Pieces,
+8,In the style of The Blaze,Learn how to remake the sound,The Blaze,

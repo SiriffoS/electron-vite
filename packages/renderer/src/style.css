@@ -1,0 +1,41 @@
+
+.app {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+html, 
+body {
+    height: 100%;
+}
+
+#topBar {
+  -webkit-app-region: drag;
+  height: 5vh;
+  max-height: 25px;
+}
+* {
+  user-select: none;
+}
+.blinking-cursor {
+  animation: blink-cursor 1s infinite;
+  width: 5px;
+  display: inline-block;
+  background: white;
+  height: 14px;
+}
+@keyframes blink-cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+

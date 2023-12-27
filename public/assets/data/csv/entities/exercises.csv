@@ -1,0 +1,11 @@
+id(integer),title(string),subtitle(string),videoFileName(string),isVideoMandatory(boolean)
+1,One clip at a time,,OneClipAtATime,false
+2,Multiple tracks,,MultipleTracksPlayback,false
+3,Timing clips,,PlayControl,false
+4,MIDI tracks & stock clips,,StockClips,false
+5,Kicks 1,,Kicks1,false
+6,Kicks 2,,Kicks2,false
+7,Snares 1,,Snares1,false
+8,Snares 2,,,false
+9,Hihats,,,false
+10,Drums to melodies,,DrumsToMelodies,false

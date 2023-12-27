@@ -1,9 +1,14 @@
-import {node} from '../../.electron-vendors.cache.json';
-import {join} from 'node:path';
-import {injectAppVersion} from '../../version/inject-app-version-plugin.mjs';
+import { node } from '../../.electron-vendors.cache.json';
+import { join } from 'node:path';
+import { resolve } from "path";
+import { injectAppVersion } from '../../version/inject-app-version-plugin.mjs';
+import { externalizeDeps } from 'vite-plugin-externalize-deps'
+import tsconfigPaths from "vite-tsconfig-paths";
 
+// const PACKAGE_ROOT = __dirname;
 const PACKAGE_ROOT = __dirname;
-const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
+const PACKAGES_ROOT = join(PACKAGE_ROOT, '../');
+const PROJECT_ROOT = join(PACKAGE_ROOT, '../../');
 
 /**
  * @type {import('vite').UserConfig}
@@ -15,8 +20,10 @@ const config = {
   envDir: PROJECT_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
+      '_/': join(PACKAGE_ROOT, 'src') + '/',
+      '_common/': join(PACKAGES_ROOT, 'common') + '/'
     },
+    preserveSymlinks: true,
   },
   build: {
     ssr: true,
@@ -37,7 +44,7 @@ const config = {
     emptyOutDir: true,
     reportCompressedSize: false,
   },
-  plugins: [injectAppVersion()],
+  plugins: [injectAppVersion(), tsconfigPaths()],
 };
 
 export default config;

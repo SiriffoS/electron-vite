@@ -1,13 +1,41 @@
-import {app, BrowserWindow} from 'electron';
+import {app, BrowserWindow, Menu, screen, shell} from 'electron';
 import {join, resolve} from 'node:path';
 
+
+let fullScreenHeight = 400;
+let fullScreenWidth = 400;
+let lastPosition: number[];
+let lastHeight: number;
+
 async function createWindow() {
+ 
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+    titleBarStyle: "hidden",
+    x: 0,
+    y: 0,
+    height: 700,
+    width: 200,
+    useContentSize: true,
+    // minWidth: import.meta.env.DEV ? undefined : 206,
+    // maxWidth: import.meta.env.DEV ? undefined : 206,
+    minHeight: 500,
+    resizable: true,
+    maximizable: false,
+
+    //color
+    backgroundColor: "#222222",
+
+    title: "Studiocamp", //title if not set in index.html
+
+    /*setting the titlebar to hidden seems to be the only way of 
+    styling its background color, but then a window drag issue arises*/
+    //alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      sandbox: false, // Sandbox disabled because the demo of preload script depend on the Node.js api
+      webSecurity: import.meta.env.DEV,
+      disableBlinkFeatures: "Auxclick",
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning
       preload: join(app.getAppPath(), 'packages/preload/dist/index.cjs'),
     },
@@ -24,9 +52,9 @@ async function createWindow() {
   browserWindow.on('ready-to-show', () => {
     browserWindow?.show();
 
-    if (import.meta.env.DEV) {
+    // if (import.meta.env.DEV) {
       browserWindow?.webContents.openDevTools();
-    }
+    // }
   });
 
   /**
@@ -56,8 +84,9 @@ async function createWindow() {
 /**
  * Restore an existing BrowserWindow or Create a new BrowserWindow.
  */
+let window:BrowserWindow | undefined;
 export async function restoreOrCreateWindow() {
-  let window = BrowserWindow.getAllWindows().find(w => !w.isDestroyed());
+ window = BrowserWindow.getAllWindows().find(w => !w.isDestroyed());
 
   if (window === undefined) {
     window = await createWindow();
@@ -69,3 +98,30 @@ export async function restoreOrCreateWindow() {
 
   window.focus();
 }
+
+const menu = Menu.buildFromTemplate([
+  {
+    label: "Studiocamp",
+    submenu: [
+      {
+        label: "Quit",
+        click() {
+          app.quit();
+        },
+      },
+    ],
+  },
+  {
+    label: "Help",
+    submenu: [
+      {
+        label: "Go to Community",
+        click() {
+          shell.openExternal("https://discord.gg/kgDUFVx6");
+        },
+      },
+    ],
+  },
+]);
+import.meta.env.DEV ? undefined : Menu.setApplicationMenu(menu);
+export { window };

@@ -1,0 +1,5 @@
+id(integer),title(string),variant(string),size(string),direction(string)
+1,Beginner? Start here,Standard,sm,column
+2,Featured artist styles,Feature,lg,row
+3,Top courses,Standard,xs,column
+4,Recording & Production,Feature,xl,column
