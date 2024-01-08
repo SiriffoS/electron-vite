@@ -1,7 +1,7 @@
 // ProgressStore.ts
 import Store from "electron-store";
 import { getExercisesByLevelId, getLevels } from "./csv/csv-loader";
-/*import { getSupabase, updateSupabaseSession } from "./supabase/supabaseClient";*/
+import { getSupabase, updateSupabaseSession } from "./supabase/supabaseClient";
 
 const yourEncryptionKey = "MyStrongEncryptionKey";
 const store = new Store({ encryptionKey: yourEncryptionKey });
@@ -62,7 +62,7 @@ class ProgressStore {
     // For the sake of this example, I'm just returning dummy tokens
     console.log(
       "refresh",
-      // (await getSupabase().auth.getSession()).data.session?.user,
+      (await getSupabase().auth.getSession()).data.session?.user,
     );
     return {
       newAccessToken: "newAccessToken",
@@ -265,7 +265,7 @@ class ProgressStore {
 
   setTokens(accessToken: string, refreshToken: string): void {
     store.set("tokens", { accessToken, refreshToken });
-    // updateSupabaseSession(accessToken, refreshToken);
+    updateSupabaseSession(accessToken, refreshToken);
   }
 
   getTokens(): { accessToken: string; refreshToken: string } {

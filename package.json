@@ -55,9 +55,14 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@supabase/auth-ui-react": "^0.4.6",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/ssr": "^0.0.10",
+    "@supabase/supabase-js": "^2.39.1",
     "@types/papaparse": "^5.3.14",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "ableton-js": "file:ableton-js-3.4.1.tgz",
     "electron-store": "^8.1.0",
     "electron-updater": "6.1.4",
     "find-process": "^1.4.7",
@@ -70,9 +75,8 @@
     "react-icons": "^4.12.0",
     "react-player": "^2.14.1",
     "react-router-dom": "^6.21.0",
+    "supabase": "^1.127.3",
     "vite-tsconfig-paths": "^4.2.2",
-    "zustand": "^4.4.7",
-    "ableton-js": "file:ableton-js-3.4.1.tgz"
-
+    "zustand": "^4.4.7"
   }
 }

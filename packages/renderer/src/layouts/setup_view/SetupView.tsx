@@ -218,7 +218,7 @@ export const SetupView: React.FC = () => {
   const [isCorrect, setIsCorrect] = useState(false);
   // const [isVideoClicked, setVideoClicked] = useState(false);
   const location = useLocation();
-  const { resetExercise, incrementAttempts, attempts, hintsUsed } =
+  const { incrementAttempts, attempts, hintsUsed } =
     useExerciseStore();
 
   //testa denna!!
@@ -226,7 +226,7 @@ export const SetupView: React.FC = () => {
     const setCorrectView = async () => {
       const searchParams = new URLSearchParams(location.search);
       const continueSetup = searchParams.get("continue");
-      let tempCurrentStepIndex = 3;
+      let tempCurrentStepIndex = 0;
 
       if (continueSetup) {
         const midiscriptCopied =
@@ -248,7 +248,7 @@ export const SetupView: React.FC = () => {
         const isAbletonLiveInstalled =
           await window.electronAPI.getAbletonLiveInstalledCheckResult();
         if (isAbletonLiveInstalled.isCorrect) {
-          tempCurrentStepIndex = 3;
+          tempCurrentStepIndex = 1;
         }
         setCurrentStepIndex(tempCurrentStepIndex);
       }
@@ -291,7 +291,6 @@ export const SetupView: React.FC = () => {
         incrementAttempts();
       } else {
         exerciseStatisticsHelper?.endExercise("0", attempts, hintsUsed);
-        resetExercise();
       }
     };
 

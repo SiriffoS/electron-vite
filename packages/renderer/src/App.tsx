@@ -21,8 +21,8 @@ import { ExerciseView } from "./layouts/exercise_view/ExerciseView";
 import createCache from "@emotion/cache";
 import { ConnectView } from "./layouts/connect_view/ConnectView";
 import { SetupView } from "./layouts/setup_view/SetupView";
-// import SupabaseProvider from "_/providers/supabaseProvider";
-// import { ExerciseStatisticsProvider } from "_/providers/exerciseStatisticsProvider";
+import SupabaseProvider from "_/providers/supabaseProvider";
+import { ExerciseStatisticsProvider } from "_/providers/exerciseStatisticsProvider";
 import { theme } from "./theme";
 import { EmotionCacheProvider } from "./EmotionCasheProvider";
 import ReactDOM from "react-dom";
@@ -46,11 +46,11 @@ root.render(
     <HashRouter>
       <EmotionCacheProvider nonce="YWZ4hUw8Pu5wDee10QYjk42i709TetLXhK08yVcIxhQgxlc3oOk9DCQqQvRBcjv7LoMTa1TKjkbCYIFxX5MTRA0b2ymjO2VH0AO528fKO3dpA2UwbD7zuYfYoJoI6fta/35AfQHcsstj80qdBqCK8fTXl16CHW6yWDyxj1RmQ9Q=">
         <ChakraProvider theme={theme}>
-          {/* <SupabaseProvider> */}
-          {/* <ExerciseStatisticsProvider> */}
-          <App />
-          {/* </ExerciseStatisticsProvider> */}
-          {/* </SupabaseProvider> */}
+          <SupabaseProvider>
+            <ExerciseStatisticsProvider>
+              <App />
+            </ExerciseStatisticsProvider>
+          </SupabaseProvider>
         </ChakraProvider>
       </EmotionCacheProvider>
     </HashRouter>

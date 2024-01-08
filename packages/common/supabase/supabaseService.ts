@@ -1,5 +1,5 @@
-/*import { SupabaseClient } from "@supabase/supabase-js";
-import { Database } from "../../types/supabaseTypes";
+import { SupabaseClient } from "@supabase/supabase-js";
+import {Database} from "../types/supabaseTypes"
 
 type ExerciseStatistic =
   Database["public"]["Tables"]["exercise_statistics"]["Row"];
@@ -64,4 +64,3 @@ class SupabaseService {
 }
 
 export default SupabaseService;
-*/

@@ -7,6 +7,7 @@ import { registerIpcHandlers, broadcastTokensSet } from './utils/ipcHandlers';
 import ProgressStore from './utils/progressStore';
 import { runAutoUpdater } from './autoUpdater';
 import path from 'path';
+import { getSupabase, initializeSupabase } from './utils/supabase/supabaseClient';
 ProgressStore.create(1);
 const progressStore = ProgressStore.getInstance();
 
@@ -46,13 +47,13 @@ app.on("open-url", async function (event, data) {
   const refreshToken = urlParams.get("refresh_token");
 
   if (refreshToken && accessToken) {
-    // progressStore.setTokens(accessToken, refreshToken);
+    progressStore.setTokens(accessToken, refreshToken);
     broadcastTokensSet();
     try {
-      // await getSupabase().auth.setSession({
-      //   access_token: accessToken,
-      //   refresh_token: refreshToken,
-      // });
+      await getSupabase().auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
     } catch (error) {
       console.error("Error setting session:", error);
     }
@@ -76,6 +77,7 @@ app
     startAbletonJs();
     registerIpcHandlers();
     addMediaLoader(); 
+    initializeSupabase();
     if(import.meta.env.DEV) {
     // installReactDevTools();
     }

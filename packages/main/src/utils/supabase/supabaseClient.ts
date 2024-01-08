@@ -1,4 +1,4 @@
-/*import { createServerClient, CookieMethods } from "@supabase/ssr";
+import { createServerClient, CookieMethods } from "@supabase/ssr";
 import { SupabaseClient } from "@supabase/supabase-js";
 
 interface SupabaseClientOptions {
@@ -44,4 +44,4 @@ const createClient = () => {
     cookies: {},
   };
   return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, options);
-};*/
+};
